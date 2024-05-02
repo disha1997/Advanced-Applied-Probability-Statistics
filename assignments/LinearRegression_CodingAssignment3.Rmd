@@ -1,0 +1,78 @@
+---
+title: "Linear Regression Coding Assignment-3"
+editor_options:
+  chunk_output_type: console
+output: html_notebook
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+library(reshape)
+```
+
+```{r}
+# Load the diabetes dataset: 
+# 10 predictors which are age, gender (1-female, 2-male), body-mass index, average blood pressure, and six blood serum measurements and 1 response variable which is a quantitative measure of disease progression one year after baseline)
+df = read.csv('Data/diabetes.csv', header = TRUE, stringsAsFactors = FALSE)
+str(df)
+```
+
+```{r}
+# Create a new feature called BMILEVEL using the BMI column and the following rules: BMI < 18.5 is underweight, 18.5 <= BMI <= 24.9 is healthy, 25 <= BMI <= 29.9 is overweight, BMI >= 30 is unhealthy
+df = df %>% mutate(BMILEVEL = case_when(BMI < 18.5 ~ 'underweight', BMI >= 18.5 & BMI <= ? ~ 'healthy', ?, ?))
+str(df)
+```
+
+
+```{r}
+# Convert 'GENDER' and 'BMILEVEL' columns to factors
+categorical_cols = c('GENDER', 'BMILEVEL')
+df[categorical_cols] = lapply(df[?], ?)
+str(df)
+```
+
+```{r}
+# Create a list of continuous columns
+continuous_cols = setdiff(colnames(df), ?)
+continuous_cols
+```
+
+```{r}
+# How many levels does the categorical variable *BMILEVEL* have? What is the reference level? 
+?
+```
+
+```{r}
+# Fit a linear model for predicting disease progression using BMILEVEL. Print the model's summary.
+# How accurate is the model?
+# Which level in BMILEVEL is most likely to not have a linear relationship with disease progression? What is the reason?
+# How worse is the disease progression in unhealthy people compared to the healthy ones?
+# How worse is the disease progression in unhealthy people compared to the overweight ones?
+# Write down the individual model for each level in BMILEVEL
+?
+```
+
+```{r}
+# Fit a linear model for predicting disease progression using BMILEVEL and the blood serum measurements. 
+# From the model summary, explain how you will find out which blood serum measurements are most likely to have a linear relationship with disease progression.
+# Fit a model using BMILEVEL and the blood serum measurements identified in the previous question and compare its accuracy with the model fit using BMILEVEL and all blood serum measurements.
+?
+```
+
+```{r}
+# Fit a linear model for predicting disease progression using BMI, age, BP, and gender. How accurate is the model? 
+# According to the model, which gender has a worse disease progression? Explain why.
+# For the same age, BP, and gender, decreasing BMI by 1 unit causes what change in the disease progression?
+# For the same age and BP, which gender benefits better w.r.t. disease progressions by decreasing BMI by 1 unit. Explain.
+?
+```
+
+```{r}
+# Fit a linear model for predicting disease progression using BMI, age, BP, gender and interaction between BMI and gender. Is this model more accurate than the model without interaction between BMI and gender?
+?
+```
+
+
+
+
+
